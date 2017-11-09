@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+    <item android:id="@+id/home"
+        android:title="@string/home"
+        android:checked="false"
+        android:icon="@drawable/in"/>
+    <item android:id="@+id/news"
+        android:title="@string/news"
+        android:checked="false"
+        android:icon="@drawable/in"/>
+    <item android:id="@+id/about"
+        android:title="@string/about"
+        android:checked="false"
+        android:icon="@drawable/in"/>
+    <item android:id="@+id/friends"
+        android:title="@string/friends"
+        android:checked="false"
+        android:icon="@drawable/in"/>
+    <item android:id="@+id/groups"
+        android:title="@string/groups"
+        android:checked="false"
+        android:icon="@drawable/in"/>
+    <item android:id="@+id/luca_dezzani"
+        android:title="@string/luca_dezzani"
+        android:checked="false"
+        android:icon="@drawable/in"
+        />
+    </group>
+</menu>

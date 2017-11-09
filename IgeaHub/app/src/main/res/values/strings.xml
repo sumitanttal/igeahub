@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">IgeaHub</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="facebook_app_id">1631356490250450</string>
+    <string name="fb_login_protocol_scheme">fb1631356490250450</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_firstname">First name</string>
+    <string name="prompt_lastname">Last name</string>
+    <string name="prompt_jobtitle">Job title</string>
+    <string name="prompt_company">Company</string>
+    <string name="prompt_country">Country</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_cpassword">Confirm Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_empty_email">Email field cannot be empty</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_empty_password">This password cannot be empty</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="signin_with_scocial_networks">Sign in with social networks</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="create_one">Create one</string>
+    <string name="account_details">Account Details</string>
+    <string name="profile_details">Profile Details</string>
+    <string name="next">next</string>
+    <string name="signup">Sign up</string>
+    <string name="home">Home</string>
+    <string name="news">News</string>
+    <string name="prespectives">Prespectives</string>
+    <string name="friends">Friends</string>
+    <string name="groups">Groups</string>
+    <string name="search">Search</string>
+    <string name="about">About</string>
+    <string name="luca_dezzani">Luca Dezzani</string>
+    <string name="prompt_create_account">Create New Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recent">Recent</string>
+    <string name="people_you_may_know">People you may know</string>
+
+
+</resources>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="handler" type="com.sumit.igeahub.activity.Signup_Second_step"/>
+    </data>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="10"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="3.5"
+            android:layout_height="0dp"
+            >
+            <ImageView
+                android:id="@+id/header_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_50sdp"
+                android:background="@drawable/header_bg"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:fontFamily="sans-serif-bold"
+                android:layout_marginTop="@dimen/acticity_default_margin_16dp"
+                android:textSize="@dimen/txt_size_18sp"
+                android:text="@string/profile_details"
+                android:textColor="@color/brown"/>
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:background="@drawable/logo"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="6.5"
+            android:paddingLeft="@dimen/acticity_default_margin_20dp"
+            android:orientation="vertical"
+            android:paddingRight="@dimen/acticity_default_margin_20dp"
+            android:paddingTop="@dimen/acticity_default_margin_10dp"
+            android:layout_height="0dp">
+
+            <include
+                android:id="@+id/vw_firstname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/material_edittext"/>
+            <include
+                android:id="@+id/vw_lastname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/material_edittext"/>
+            <include
+                android:id="@+id/vw_jobtittle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/material_edittext"/>
+            <include
+                android:id="@+id/vw_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/material_edittext"/>
+            <include
+                android:id="@+id/vw_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/material_edittext"/>
+            <TextView
+                android:id="@+id/tv_signup"
+                style="@style/App_Theme_Style_MW"
+                android:background="@color/button_bg_clr"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/acticity_default_margin_14dp"
+                android:textSize="@dimen/txt_size_16sp"
+                android:textAllCaps="true"
+
+                android:padding="@dimen/acticity_default_margin_10dp"
+                android:textColor="@color/black"
+                android:text="@string/signup"/>
+            <TextView
+                android:id="@+id/tv_forgot_pass"
+                style="@style/App_Theme_Style_MW"
+                android:gravity="center"
+                android:visibility="gone"
+                android:textSize="@dimen/txt_size_12sp"
+                android:padding="@dimen/acticity_default_margin_10dp"
+                android:text="@string/forgot_password"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
