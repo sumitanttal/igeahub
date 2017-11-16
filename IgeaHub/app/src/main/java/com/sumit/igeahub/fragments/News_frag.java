@@ -2,10 +2,8 @@ package com.sumit.igeahub.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,8 +18,8 @@ import com.google.gson.GsonBuilder;
 import com.sumit.igeahub.R;
 import com.sumit.igeahub.activity.ArticleDetailActivity;
 import com.sumit.igeahub.adapters.HomeAdapter;
-import com.sumit.igeahub.adapters.RecentAdapter;
 import com.sumit.igeahub.constants.ApiConstants;
+import com.sumit.igeahub.databinding.FragmentNewsBinding;
 import com.sumit.igeahub.databinding.FragmentRecentBinding;
 import com.sumit.igeahub.interfaces.CallBackRequestListener;
 import com.sumit.igeahub.pojo.Article_Pojo;
@@ -37,9 +35,9 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Recent_Fragment extends Fragment {
+public class News_frag extends Fragment {
 
-FragmentRecentBinding mBinding;
+FragmentNewsBinding mBinding;
     RecyclerView recycler_view;
     View view;
     Activity mActivity;
@@ -49,7 +47,7 @@ FragmentRecentBinding mBinding;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding= DataBindingUtil.inflate(inflater,
-                R.layout.fragment_recent, container, false);
+                R.layout.fragment_news, container, false);
         recycler_view=mBinding.recyclerView;
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("M/d/yy hh:mm a");
@@ -107,7 +105,7 @@ FragmentRecentBinding mBinding;
                     String  message=reader.getString("message");
                     JSONArray article=reader.getJSONArray("article");
                     if(success==1) {
-                        List<Article_Pojo> articles = Arrays.asList(gson.fromJson(article.toString(), Article_Pojo[].class));
+                        final    List<Article_Pojo> articles = Arrays.asList(gson.fromJson(article.toString(), Article_Pojo[].class));
                         MessageUtility.showLog("list size", articles.size() + "");
 
                         HomeAdapter mAdapter=new HomeAdapter(getActivity(),articles);
@@ -117,7 +115,11 @@ FragmentRecentBinding mBinding;
                                     @Override public void onItemClick(View view, int position) {
                                         // TODO Handle item click
 
-                                        startActivity(new Intent(getActivity(), ArticleDetailActivity.class));
+                                        Intent intent=new Intent(getActivity(), ArticleDetailActivity.class);
+                                        Bundle bundle=new Bundle();
+                                        bundle.putString("article_id",articles.get(position).getId()+"");
+                                        intent.putExtra("bundle",bundle);
+                                        startActivity(intent);
                                     }
                                 })
                         );

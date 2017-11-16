@@ -83,16 +83,22 @@
                 android:padding="@dimen/acticity_default_margin_10dp"
                 android:textColor="@color/black"
                 android:text="@string/next"/>
+            <RelativeLayout
+                style="@style/App_Theme_Style_MM"
+                >
+
             <TextView
-                android:id="@+id/tv_forgot_pass"
+                android:id="@+id/tv_already_have_acc"
                 style="@style/App_Theme_Style_MW"
                 android:gravity="center"
-                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:onClick="gotologin"
                 android:textSize="@dimen/txt_size_12sp"
+                android:textColor="@color/com_facebook_messenger_blue"
                 android:padding="@dimen/acticity_default_margin_10dp"
-                android:text="@string/forgot_password"/>
+                android:text="@string/already_have_acc"/>
 
-
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>

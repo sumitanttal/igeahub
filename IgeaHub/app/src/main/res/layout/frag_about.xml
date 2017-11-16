@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-        <variable name="handler" type="com.sumit.igeahub.activity.ArticleDetailActivity"/>
+        <variable name="handler" type="com.sumit.igeahub.fragments.About_Fragment"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,8 +16,7 @@
                 android:id="@+id/drawer_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/back"
-                android:onClick="actionBack"
+                android:src="@drawable/menu"
                 android:layout_centerVertical="true"
                 android:padding="@dimen/acticity_default_margin_10dp"
                 />
@@ -28,22 +27,20 @@
                 android:fontFamily="sans-serif-bold"
                 android:layout_centerInParent="true"
                 android:textColor="@color/black"
-                />
+                android:text="@string/about"/>
 
         </RelativeLayout>
-        <RelativeLayout
-           style="@style/App_Theme_Style_MM"
-          >
-            <ImageView
-               android:id="@+id/article_image"
-                style="@style/App_Theme_Style_MW"
-                />
+        <LinearLayout
+          style="@style/App_Theme_Style_MM"
+            android:orientation="vertical">
             <WebView
                 android:id="@+id/webview"
                 style="@style/App_Theme_Style_MM"
                 android:layout_below="@+id/article_image"
                 ></WebView>
 
-        </RelativeLayout>
+        </LinearLayout>
+
+
     </LinearLayout>
 </layout>

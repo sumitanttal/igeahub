@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="190dp"
-    android:background="@color/button_bg_clr"
+    android:background="@drawable/header_bg"
     android:orientation="vertical"
     >
     <de.hdodenhof.circleimageview.CircleImageView

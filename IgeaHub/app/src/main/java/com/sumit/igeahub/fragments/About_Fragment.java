@@ -2,34 +2,28 @@ package com.sumit.igeahub.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sumit.igeahub.R;
-import com.sumit.igeahub.activity.ArticleDetailActivity;
-import com.sumit.igeahub.adapters.HomeAdapter;
-import com.sumit.igeahub.adapters.RecentAdapter;
 import com.sumit.igeahub.constants.ApiConstants;
-import com.sumit.igeahub.databinding.FragmentRecentBinding;
+import com.sumit.igeahub.databinding.FragAboutBinding;
+import com.sumit.igeahub.databinding.FragProfileBinding;
 import com.sumit.igeahub.interfaces.CallBackRequestListener;
-import com.sumit.igeahub.pojo.Article_Pojo;
+import com.sumit.igeahub.pojo.Article_Detail_Pojo;
 import com.sumit.igeahub.utils.MessageUtility;
-import com.sumit.igeahub.utils.RecyclerItemClickListener;
 import com.sumit.igeahub.utils.VolleyRequest;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
@@ -37,10 +31,10 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class Recent_Fragment extends Fragment {
+public class About_Fragment extends Fragment {
 
-FragmentRecentBinding mBinding;
-    RecyclerView recycler_view;
+FragAboutBinding mBinding;
+
     View view;
     Activity mActivity;
     private Gson gson;
@@ -49,8 +43,7 @@ FragmentRecentBinding mBinding;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mBinding= DataBindingUtil.inflate(inflater,
-                R.layout.fragment_recent, container, false);
-        recycler_view=mBinding.recyclerView;
+                R.layout.frag_about, container, false);
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.setDateFormat("M/d/yy hh:mm a");
         gson = gsonBuilder.create();
@@ -70,66 +63,44 @@ FragmentRecentBinding mBinding;
             }
         });
 
-        makeArticleReq();
+        makeAboutContentReq();
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        recycler_view.setLayoutManager(layoutManager);
 
         return view;
     }
-    private void makeArticleReq() {
+
+    private void makeAboutContentReq() {
         // Intent intent=new Intent(mActivity,HomeActivity.class);
         //super.setOnActivityTrasfer(intent,HOME_ACT_REQ_CODE);
         /////////////////////////////////////
 
 
         HashMap<String, String> nMap=new HashMap<>();
-       /* JSONObject mainObject = new JSONObject();
-        try {
-            mainObject.put("result", "true");
-            mainObject.put("question_id", post_id);
 
-
-        } catch (JSONException e) {
-            MessageUtility.showLog("exception", e.toString());
-        }*/
-
+        // nMap.put("articleid", article_id);
 
         MessageUtility.showLog("map", nMap + "");
         //getUrl(params);
-        VolleyRequest.makePostRequest(ApiConstants.METHOD_POST,mActivity, nMap, ApiConstants.ACTION_NEWS, new CallBackRequestListener() {
+        VolleyRequest.makePostRequest(ApiConstants.METHOD_POST,mActivity, nMap, ApiConstants.ACTION_ABOUTUS, new CallBackRequestListener() {
             @Override
             public void onSuccess(String result) {
                 MessageUtility.showLog("success", result);
                 try {
                     JSONObject reader=new JSONObject(result);
                     int success=reader.getInt("success");
-                    String  message=reader.getString("message");
-                    JSONArray article=reader.getJSONArray("article");
+                    String message=reader.getString("message");
                     if(success==1) {
-                        List<Article_Pojo> articles = Arrays.asList(gson.fromJson(article.toString(), Article_Pojo[].class));
-                        MessageUtility.showLog("list size", articles.size() + "");
+                            String about_content=reader.getString("Page_content");
+                            mBinding.webview.getSettings().setJavaScriptEnabled(true);
+                            mBinding.webview.loadData(about_content, "text/html; charset=utf-8", "UTF-8");
 
-                        HomeAdapter mAdapter=new HomeAdapter(getActivity(),articles);
-                        recycler_view.setAdapter(mAdapter);
-                        recycler_view.addOnItemTouchListener(
-                                new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
-                                    @Override public void onItemClick(View view, int position) {
-                                        // TODO Handle item click
-
-                                        startActivity(new Intent(getActivity(), ArticleDetailActivity.class));
-                                    }
-                                })
-                        );
-                    }else{
+                    }
+                    else{
                         MessageUtility.showSnackBar(mActivity,message);
                     }
-                } catch (Exception e) {
-                    MessageUtility.showLog("exception",e.toString()+"");
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-
-
-
 
             }
 
@@ -140,6 +111,5 @@ FragmentRecentBinding mBinding;
         });
 
     }
-
 
 }

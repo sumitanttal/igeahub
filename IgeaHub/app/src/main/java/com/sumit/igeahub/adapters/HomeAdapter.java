@@ -9,8 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.sumit.igeahub.R;
 import com.sumit.igeahub.activity.ArticleDetailActivity;
+import com.sumit.igeahub.pojo.Article_Pojo;
+
+import java.util.List;
 
 
 /**
@@ -21,14 +26,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         Context mContext;
         Activity    mActivity;
-
+    List<Article_Pojo> articles;
         RecyclerView recyclerview;
         RecyclerView mRecyclerViewAllUserListing;
 
-        public HomeAdapter(Context applicationContext) {
+        public HomeAdapter(Context applicationContext, List<Article_Pojo> articles) {
             mContext=applicationContext;
             this.mActivity=mActivity;
-
+            this.articles=articles;
             this.recyclerview=recyclerview;
         }
 
@@ -43,7 +48,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-
+                holder.text.setText(articles.get(position).getTitle());
+             Glide.with(mContext)
+                    .load(articles.get(position).getArticleimageurl())
+                    .into(holder.image);
 
         }
 
@@ -57,7 +65,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         @Override
         public int getItemCount() {
 
-            return 4;
+            return articles.size();
         }
 
 

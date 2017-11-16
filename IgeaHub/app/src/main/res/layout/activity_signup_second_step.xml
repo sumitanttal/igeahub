@@ -3,6 +3,10 @@
     <data>
         <variable name="handler" type="com.sumit.igeahub.activity.Signup_Second_step"/>
     </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <LinearLayout
 
@@ -23,16 +27,27 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/_50sdp"
                 android:background="@drawable/header_bg"/>
+            <RelativeLayout
+               style="@style/App_Theme_Style_MW"
+                android:layout_marginTop="@dimen/_7sdp">
+            <ImageView
+                android:id="@+id/back"
+                style="@style/App_Theme_Style_WW"
+                android:src="@drawable/back"
+                android:onClick="actionBack"
+                android:padding="@dimen/acticity_default_margin_10dp"
+                />
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+               style="@style/App_Theme_Style_WW"
                 android:gravity="center"
+                android:layout_centerHorizontal="true"
                 android:textAllCaps="true"
                 android:fontFamily="sans-serif-bold"
-                android:layout_marginTop="@dimen/acticity_default_margin_16dp"
+                android:layout_centerInParent="true"
                 android:textSize="@dimen/txt_size_18sp"
                 android:text="@string/profile_details"
                 android:textColor="@color/brown"/>
+            </RelativeLayout>
             <ImageView
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
@@ -84,7 +99,7 @@
                 android:layout_marginTop="@dimen/acticity_default_margin_14dp"
                 android:textSize="@dimen/txt_size_16sp"
                 android:textAllCaps="true"
-
+                android:onClick="actionRegister"
                 android:padding="@dimen/acticity_default_margin_10dp"
                 android:textColor="@color/black"
                 android:text="@string/signup"/>
@@ -99,6 +114,16 @@
 
 
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/tv_already_have_acc"
+            style="@style/App_Theme_Style_MW"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:onClick="gotologin"
+            android:textSize="@dimen/txt_size_12sp"
+            android:textColor="@color/com_facebook_messenger_blue"
+            android:padding="@dimen/acticity_default_margin_10dp"
+            android:text="@string/already_have_acc"/>
     </LinearLayout>
+    </ScrollView>
 </layout>

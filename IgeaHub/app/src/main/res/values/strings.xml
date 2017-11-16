@@ -17,11 +17,19 @@
     <string name="prompt_cpassword">Confirm Password</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_empty_email">Email field cannot be empty</string>
+    <string name="error_empty_username">Username field cannot be empty</string>
+    <string name="error_empty_firstname">First name field cannot be empty</string>
+    <string name="error_empty_jobtittle">Job tittle field cannot be empty</string>
+    <string name="error_empty_company">Company field cannot be empty</string>
+    <string name="error_empty_country">Country field cannot be empty</string>
+    <string name="error_empty_lastname">Last name field cannot be empty</string>
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_empty_password">This password cannot be empty</string>
     <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_password_not_matched">Password not matched.</string>
     <string name="forgot_password">Forgot your password?</string>
+    <string name="already_have_acc"><u>Already have an account ?</u></string>
     <string name="signin_with_scocial_networks">Sign in with social networks</string>
     <string name="dont_have_account">Don\'t have an account?</string>
     <string name="create_one">Create one</string>
@@ -36,7 +44,9 @@
     <string name="groups">Groups</string>
     <string name="search">Search</string>
     <string name="about">About</string>
+    <string name="profile">Profile</string>
     <string name="luca_dezzani">Luca Dezzani</string>
+    <string name="logout">Logout</string>
     <string name="prompt_create_account">Create New Account</string>
 
     <!-- TODO: Remove or change this placeholder text -->

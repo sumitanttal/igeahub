@@ -26,14 +26,15 @@ public class MessageUtility {
     public static void showSnackBar(Context context, String message) {
 
         try {
+            MessageUtility.showLog( "layout:::","method called");
             LayoutInflater layoutInflater = ((Activity) context).getLayoutInflater();
             View view = layoutInflater.inflate(R.layout.snackbar_layout, null);
 
             View id = view.findViewById(R.id.snackbar_action);
-            //MessageUtility.showLog(context, "layout", id + "");
+            MessageUtility.showLog( "layout:::",id + "");
             Snackbar.make(((Activity) context).findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT).setActionTextColor(Color.RED).show();
         } catch (Exception e) {
-            e.printStackTrace();
+            MessageUtility.showLog( "exception:::",e.toString());
         }
     }
 }

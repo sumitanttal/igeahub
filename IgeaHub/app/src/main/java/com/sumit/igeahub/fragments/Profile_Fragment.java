@@ -1,10 +1,9 @@
 package com.sumit.igeahub.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,27 +13,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sumit.igeahub.R;
 import com.sumit.igeahub.activity.ArticleDetailActivity;
-import com.sumit.igeahub.adapters.RecentAdapter;
-import com.sumit.igeahub.databinding.FragmentFriendListBinding;
+import com.sumit.igeahub.adapters.HomeAdapter;
+import com.sumit.igeahub.constants.ApiConstants;
+import com.sumit.igeahub.databinding.FragProfileBinding;
+import com.sumit.igeahub.databinding.FragmentRecentBinding;
+import com.sumit.igeahub.interfaces.CallBackRequestListener;
+import com.sumit.igeahub.pojo.Article_Pojo;
+import com.sumit.igeahub.utils.MessageUtility;
 import com.sumit.igeahub.utils.RecyclerItemClickListener;
+import com.sumit.igeahub.utils.VolleyRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 
-public class FriendList_Fragment extends Fragment {
-    FragmentFriendListBinding mBinding;
-    RecyclerView recycler_view;
+public class Profile_Fragment extends Fragment {
+
+FragProfileBinding mBinding;
+
     View view;
+    Activity mActivity;
+    private Gson gson;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         mBinding= DataBindingUtil.inflate(inflater,
-                R.layout.fragment_friend_list, container, false);
-        recycler_view=mBinding.recyclerView;
+                R.layout.frag_profile, container, false);
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.setDateFormat("M/d/yy hh:mm a");
+        gson = gsonBuilder.create();
         view=mBinding.getRoot();
         // Inflate the layout for this fragment
+        mActivity=getActivity();
 
         mBinding.drawerIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,21 +67,12 @@ public class FriendList_Fragment extends Fragment {
             }
         });
 
-        RecentAdapter mAdapter=new RecentAdapter(getActivity());
-        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
-        recycler_view.setLayoutManager(layoutManager);
-        recycler_view.setAdapter(mAdapter);
-        recycler_view.addOnItemTouchListener(
-                new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        // TODO Handle item click
 
-                        startActivity(new Intent(getActivity(), ArticleDetailActivity.class));
-                    }
-                })
-        );
+
+
         return view;
     }
+
 
 
 }
