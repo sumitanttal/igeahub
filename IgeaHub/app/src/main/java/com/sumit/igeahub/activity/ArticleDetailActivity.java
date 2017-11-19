@@ -33,6 +33,7 @@ public class ArticleDetailActivity extends ParentActivity {
     Activity mActivity;
     Context mApplicationContext;
     Context mContext;
+    String article_id;
     private Gson gson;
 
     @Override
@@ -46,7 +47,7 @@ public class ArticleDetailActivity extends ParentActivity {
         gsonBuilder.setDateFormat("M/d/yy hh:mm a");
         gson = gsonBuilder.create();
         Bundle bundle=getIntent().getBundleExtra("bundle");
-        String article_id=bundle.getString("article_id");
+         article_id=bundle.getString("article_id");
         MessageUtility.showLog("article_id",article_id);
         makeArticleDetailReq(article_id);
     }
@@ -56,7 +57,13 @@ public class ArticleDetailActivity extends ParentActivity {
 
     }
 
-
+    public void actionComments(View view){
+        Intent intent=new Intent(mActivity,CommentListingActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putString("article_id",article_id);
+        intent.putExtra("bundle",bundle);
+        super.startActivity(intent);
+    }
     public void actionBack(View view){
         finish();
     }

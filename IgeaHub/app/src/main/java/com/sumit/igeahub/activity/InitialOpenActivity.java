@@ -40,7 +40,7 @@ public class InitialOpenActivity extends ParentActivity {
                         boolean result = PermissionActivity.checkPermission(mActivity);
                         if (result) {
                             Thread.sleep(1000);
-                            Intent intent = new Intent(mActivity, LoginActivity.class);
+                            Intent intent = new Intent(mActivity, HomeActivity.class);
                             setOnActivityTrasfer(intent, LOGIN_ACT_REQ_CODE);
                         }
                     } catch (InterruptedException e) {

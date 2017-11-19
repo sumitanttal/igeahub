@@ -4,9 +4,11 @@
     package="com.sumit.igeahub">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <!--<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!--
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />-->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -50,7 +52,8 @@
         <activity android:name=".activity.Signup_FirstStep" />
         <activity android:name=".activity.Signup_Second_step" />
         <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.ArticleDetailActivity"></activity>
+        <activity android:name=".activity.ArticleDetailActivity" />
+        <activity android:name=".activity.CommentListingActivity"></activity>
     </application>
 
 </manifest>

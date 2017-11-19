@@ -32,8 +32,7 @@
 
         </RelativeLayout>
         <RelativeLayout
-           style="@style/App_Theme_Style_MM"
-          >
+           style="@style/App_Theme_Style_MM">
             <ImageView
                android:id="@+id/article_image"
                 style="@style/App_Theme_Style_MW"
@@ -42,7 +41,35 @@
                 android:id="@+id/webview"
                 style="@style/App_Theme_Style_MM"
                 android:layout_below="@+id/article_image"
+                android:layout_above="@+id/footer"
+                android:descendantFocusability="blocksDescendants"
                 ></WebView>
+                <LinearLayout
+                    android:id="@+id/footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:weightSum="3">
+                    <TextView
+                       android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="1 views"
+                        />
+                    <TextView
+                        android:id="@+id/comments"
+                        android:onClick="actionComments"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                       android:text="comments"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Luca dezzani"/>
+                </LinearLayout>
 
         </RelativeLayout>
     </LinearLayout>
