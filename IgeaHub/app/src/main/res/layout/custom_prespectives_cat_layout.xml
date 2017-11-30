@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/cate_name"
+        style="@style/App_Theme_Style_MW"
+        android:text="temo"
+        android:textSize="@dimen/txt_size_14sp"
+        android:background="#e6e5e5"
+        android:padding="@dimen/acticity_default_margin_10dp"/>
+</LinearLayout>

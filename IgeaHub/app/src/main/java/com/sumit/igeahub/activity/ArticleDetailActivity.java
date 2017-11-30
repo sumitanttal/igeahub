@@ -32,6 +32,7 @@ public class ArticleDetailActivity extends ParentActivity {
     ActivityArticleDetailBinding mBinding;
     Activity mActivity;
     Context mApplicationContext;
+    private final int COMMENTS_LISTING_ACT_REQ_CODE=1000;
     Context mContext;
     String article_id;
     private Gson gson;
@@ -68,7 +69,7 @@ public class ArticleDetailActivity extends ParentActivity {
         finish();
     }
 
-    private void makeArticleDetailReq(String article_id) {
+    private void makeArticleDetailReq(final String article_id) {
         // Intent intent=new Intent(mActivity,HomeActivity.class);
         //super.setOnActivityTrasfer(intent,HOME_ACT_REQ_CODE);
         /////////////////////////////////////
@@ -97,6 +98,18 @@ public class ArticleDetailActivity extends ParentActivity {
                                     .into(mBinding.articleImage);
                             mBinding.webview.getSettings().setJavaScriptEnabled(true);
                             mBinding.webview.loadData(articles.get(0).getDescription(), "text/html; charset=utf-8", "UTF-8");
+                            mBinding.comments.setText(articles.get(0).getComent_count()+" "+getResources().getString(R.string.comments));
+                            mBinding.views.setText(articles.get(0).getViews_count()+" "+getResources().getString(R.string.views));
+                            mBinding.comments.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent=new Intent(mActivity,CommentListingActivity.class);
+                                    Bundle bundle=new Bundle();
+                                    bundle.putString("article_id",article_id);
+                                    intent.putExtra("bundle",bundle);
+                                    ArticleDetailActivity.super.setOnActivityTrasfer(intent,COMMENTS_LISTING_ACT_REQ_CODE);
+                                }
+                            });
                         }
                     }
                     else{

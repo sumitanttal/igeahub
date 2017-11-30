@@ -45,6 +45,7 @@ public class LoginActivity extends ParentActivity {
     ActivityLoginBinding mBinding;
     private final int SIGNUP_FIRST_STEP_REQ_CODE=100;
     private final int HOME_ACT_REQ_CODE=200;
+    TextInputLayout email_layout,pas_layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,10 +69,10 @@ public class LoginActivity extends ParentActivity {
 
     private void init_Views() {
 
-        TextInputLayout email_layout= findViewById(R.id.vw_email).findViewById(R.id.text_input_layout);
+         email_layout= findViewById(R.id.vw_email).findViewById(R.id.text_input_layout);
         email_layout.setHint(getResources().getString(R.string.prompt_email));
 
-        TextInputLayout pas_layout= findViewById(R.id.vw_pass).findViewById(R.id.text_input_layout);
+         pas_layout= findViewById(R.id.vw_pass).findViewById(R.id.text_input_layout);
         pas_layout.setHint(getResources().getString(R.string.prompt_password));
         EditText et_password=findViewById(R.id.vw_pass).findViewById(R.id.edittext);
         et_password.setInputType(InputType.TYPE_CLASS_TEXT |
@@ -88,8 +89,8 @@ public class LoginActivity extends ParentActivity {
 
     public void actionLogin(View view){
         MessageUtility.showLog("login","clicked");
-        EditText email_vw=mBinding.vwEmail.findViewById(R.id.edittext);
-        EditText pass_vw=mBinding.vwPass.findViewById(R.id.edittext);
+        EditText email_vw=email_layout.findViewById(R.id.edittext);
+        EditText pass_vw=pas_layout.findViewById(R.id.edittext);
         String str_email=email_vw.getText().toString().trim();
         String str_pass=pass_vw.getText().toString().trim();
         if(Validator.isValidfields(mActivity,str_email,str_pass)){
@@ -109,11 +110,8 @@ public class LoginActivity extends ParentActivity {
 
 
         HashMap<String, String> nMap=new HashMap<>();
-
         nMap.put(ApiConstants.UNAME, str_email);
         nMap.put(ApiConstants.UPASS, str_pass);
-
-
         MessageUtility.showLog("map", nMap + "");
         //getUrl(params);
         VolleyRequest.makePostRequest(ApiConstants.METHOD_POST,mActivity, nMap, ApiConstants.ACTION_LOGIN, new CallBackRequestListener() {
@@ -127,7 +125,7 @@ public class LoginActivity extends ParentActivity {
                     if(success==1) {
                         String userid=reader.getString("userid");
                         String firstname=reader.getString("firstname");
-                        String last_name=reader.getString("last_name");
+                        String last_name=reader.getString("lastname");
                         String emailaddress=reader.getString("emailaddress");
                         String jobtitle=reader.getString("jobtitle");
                         String company=reader.getString("company");

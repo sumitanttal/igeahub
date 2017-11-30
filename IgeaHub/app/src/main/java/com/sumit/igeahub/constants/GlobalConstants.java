@@ -18,6 +18,8 @@ public class GlobalConstants {
     public final String JOBTITLE="JOBTITLE";
     public final String COMPANY="COMPANY";
     public final String COUNTRY="COUNTRY";
+    public final String NEW_CHAT="1";
+    public final String OLD_CHAT="0";
 
     public static GlobalConstants getInstance(){
         return new GlobalConstants();

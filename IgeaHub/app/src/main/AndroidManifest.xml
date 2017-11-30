@@ -53,7 +53,9 @@
         <activity android:name=".activity.Signup_Second_step" />
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.ArticleDetailActivity" />
-        <activity android:name=".activity.CommentListingActivity"></activity>
+        <activity android:name=".activity.CommentListingActivity" />
+        <activity android:name=".activity.PrespectivesArticlesActivity" />
+        <activity android:name=".activity.ChatActivity"></activity>
     </application>
 
 </manifest>

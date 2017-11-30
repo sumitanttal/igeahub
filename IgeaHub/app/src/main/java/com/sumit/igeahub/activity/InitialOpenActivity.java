@@ -22,35 +22,6 @@ public class InitialOpenActivity extends ParentActivity {
     private final int LOGIN_ACT_REQ_CODE=101;
     private final int HOME_ACT_REQ_CODE=101;
     public  final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mContext=getBaseContext();
-        MessageUtility.showLog("isUserLoggedIn()",isUserLoggedIn()+"");
-        if(isUserLoggedIn()){
-            Intent intent = new Intent(mActivity, HomeActivity.class);
-            setOnActivityTrasfer(intent, HOME_ACT_REQ_CODE);
-        }else {
-            setContentView(R.layout.activity_initial_open);
-            mActivity = this;
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        boolean result = PermissionActivity.checkPermission(mActivity);
-                        if (result) {
-                            Thread.sleep(1000);
-                            Intent intent = new Intent(mActivity, HomeActivity.class);
-                            setOnActivityTrasfer(intent, LOGIN_ACT_REQ_CODE);
-                        }
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }).start();
-        }
-    }
-
     private boolean isUserLoggedIn() {
         SharedPreference mPref=SharedPreference.getInstance();
         HashMap<String,String> map=mPref.getLoggedInUser(mContext);
@@ -59,6 +30,38 @@ public class InitialOpenActivity extends ParentActivity {
         else
             return false;
 
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mContext=getBaseContext();
+        mActivity = this;
+        MessageUtility.showLog("isUserLoggedIn()",isUserLoggedIn()+"");
+        if(isUserLoggedIn()){
+            MessageUtility.showLog("login controll","if called");
+            Intent intent = new Intent(mActivity, HomeActivity.class);
+            setOnActivityTrasfer(intent, HOME_ACT_REQ_CODE);
+
+        }else {
+            MessageUtility.showLog("login controll","else called");
+            setContentView(R.layout.activity_initial_open);
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        boolean result = PermissionActivity.checkPermission(mActivity);
+                        if (result) {
+                            Thread.sleep(1000);
+                            Intent intent = new Intent(mActivity, LoginActivity.class);
+                            setOnActivityTrasfer(intent, LOGIN_ACT_REQ_CODE);
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
+        }
     }
 
     @Override

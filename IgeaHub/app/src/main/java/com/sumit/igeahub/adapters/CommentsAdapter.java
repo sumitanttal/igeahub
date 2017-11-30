@@ -9,32 +9,37 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.sumit.igeahub.R;
+import com.sumit.igeahub.pojo.Article_Pojo;
+import com.sumit.igeahub.pojo.Comment_Pojo;
+
+import java.util.List;
 
 
 /**
  * Created by sumit on 6/11/17.
  */
 
-public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.ViewHolder> {
+public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
 
         Context mContext;
         Activity    mActivity;
-
+    List<Comment_Pojo> comments;
         RecyclerView recyclerview;
         RecyclerView mRecyclerViewAllUserListing;
 
-        public FriendListAdapter(Context applicationContext) {
+        public CommentsAdapter(Context applicationContext, List<Comment_Pojo> articles) {
             mContext=applicationContext;
             this.mActivity=mActivity;
-
+            this.comments=articles;
             this.recyclerview=recyclerview;
         }
 
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_friendlist_layout, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_comment_layout, parent, false);
             //   MessageUtility.showLog("view","on create view");
             return new ViewHolder(view, mContext);
         }
@@ -42,8 +47,11 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-
-
+                holder.username.setText(comments.get(position).getUser_name());
+                holder.comment.setText(comments.get(position).getComnt_content());
+             Glide.with(mContext)
+                    .load(comments.get(position).getUser_image()).placeholder(mContext.getResources().getDrawable(R.drawable.ic_default_user))
+                    .into(holder.image);
         }
 
         @Override
@@ -56,7 +64,7 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
         @Override
         public int getItemCount() {
 
-            return 10;
+            return comments.size();
         }
 
 
@@ -65,13 +73,14 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
         class ViewHolder extends RecyclerView.ViewHolder {
             private Context mContext;
             ImageView image;
-            TextView    text;
+            TextView    username,comment;
 
             ViewHolder(View itemView, final Context mContext) {
                 super(itemView);
                 this.mContext = mContext;
-                image = (ImageView) itemView.findViewById(R.id.image);
-                text = (TextView) itemView.findViewById(R.id.text);
+                image = (ImageView) itemView.findViewById(R.id.profile_image);
+                username = (TextView) itemView.findViewById(R.id.username);
+                comment = (TextView) itemView.findViewById(R.id.comment);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

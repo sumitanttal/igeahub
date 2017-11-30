@@ -48,11 +48,15 @@
     <string name="luca_dezzani">Luca Dezzani</string>
     <string name="logout">Logout</string>
     <string name="prompt_create_account">Create New Account</string>
-
+    <string name="views">views</string>
+    <string name="comments">comments</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="recent">Recent</string>
     <string name="people_you_may_know">People you may know</string>
+    <string name="all_members">All Members</string>
+    <string name="message">Messages</string>
+    <string name="chat">Chat</string>
 
 
 </resources>

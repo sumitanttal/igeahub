@@ -31,6 +31,7 @@ android {
                 }
             }
         }
+
     }
 
 }
@@ -42,7 +43,7 @@ dependencies {
     })
 
     compile 'com.android.volley:volley:1.0.0'
-    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
+    compile 'com.facebook.android:facebook-android-sdk:4.26.0'
     compile 'com.intuit.sdp:sdp-android:1.0.4'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.android.support:design:26.0.0-alpha1'

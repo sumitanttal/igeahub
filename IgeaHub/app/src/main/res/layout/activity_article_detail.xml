@@ -52,10 +52,12 @@
                     android:layout_alignParentBottom="true"
                     android:weightSum="3">
                     <TextView
+                        android:id="@+id/views"
                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="1 views"
+                        android:gravity="center"
+                        android:text="@string/views"
                         />
                     <TextView
                         android:id="@+id/comments"
@@ -63,11 +65,13 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                       android:text="comments"/>
+                        android:gravity="center"
+                       android:text="@string/comments"/>
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="Luca dezzani"/>
                 </LinearLayout>
 

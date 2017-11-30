@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/App_Theme_Style_MW"
+    >
+    <RelativeLayout
+       style="@style/App_Theme_Style_MW"
+        android:padding="@dimen/acticity_default_margin_10dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/ic_default_user"
+        />
+
+    <TextView
+        android:id="@+id/username"
+        style="@style/App_Theme_Style_WW"
+        android:text="Mr.John Doe"
+        android:textColor="@color/black"
+        android:textSize="@dimen/txt_size_14sp"
+        android:layout_toRightOf="@+id/profile_image"
+        android:layout_marginLeft="@dimen/acticity_default_margin_10dp"/>
+        <TextView
+            android:id="@+id/comment"
+            style="@style/App_Theme_Style_WW"
+
+            android:layout_below="@+id/username"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/profile_image"
+            android:layout_marginLeft="@dimen/acticity_default_margin_10dp"/>
+    </RelativeLayout>
+</LinearLayout>
